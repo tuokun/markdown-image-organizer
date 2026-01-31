@@ -1,15 +1,15 @@
 ---
-name: obsidian-image-organizer
-description: Organize and manage images in Obsidian notes by moving them to specified folders, renaming them meaningfully based on context, and updating links. Also cleans up text formatting in Markdown files.
+name: markdown-image-organizer
+description: Organize and manage images in Markdown documents by moving them to specified folders, renaming them meaningfully based on context, and updating links. Also cleans up text formatting. Compatible with all Markdown editors including Obsidian.
 ---
 
-# Obsidian Image Organizer Skill
+# Markdown Image Organizer Skill
 
-This skill enables agents to organize images in Obsidian notes by moving them to dedicated folders, renaming them with meaningful names based on their context in the document, updating the image links, and cleaning up text formatting.
+This skill enables agents to organize images in Markdown documents by moving them to dedicated folders, renaming them with meaningful names based on their context in the document, updating the image links, and cleaning up text formatting.
 
 ## Overview
 
-When working with Obsidian, images are often pasted with generic names like "Pasted image 20260130230732.png". This skill helps:
+When working with Markdown documents (such as in Obsidian, Typora, etc.), images are often pasted with generic names like "1.png", "2.png". This skill helps:
 - Move images to organized folders (e.g., "附录图", "images", "assets")
 - Rename images with meaningful names based on their context in the document
 - Update image links in Markdown files to reflect new locations and names
@@ -35,7 +35,7 @@ Use this skill when:
 ### Step 1: Analyze the Markdown File
 
 Read the Markdown file to:
-1. Identify all image links (Obsidian wikilinks format `![[image.png]]`)
+1. Identify all image links (wikilinks format `![[image.png]]` or markdown format `![alt](image.png)`)
 2. Understand the context around each image
 3. Note the current location of each image file
 
@@ -43,7 +43,7 @@ Read the Markdown file to:
 ```markdown
 举一个字符数组的例子，如图所示：
 
-![[Pasted image 20260130230732.png]]
+![[1.png]]
 ```
 
 ### Step 2: Generate Meaningful Names
@@ -60,9 +60,9 @@ For each image, analyze the surrounding text to generate a meaningful name:
 - Use Chinese for Chinese content
 
 **Examples:**
-- `Pasted image 20260130230732.png` → `数组-字符数组示例.png`
-- `Pasted image 20260130230810.png` → `数组-删除元素移动.png`
-- `Pasted image 20260130231442.png` → `数组-二维数组示例.png`
+- `1.png` → `数组-字符数组示例.png`
+- `2.png` → `数组-删除元素移动.png`
+- `3.png` → `数组-二维数组示例.png`
 
 ### Step 3: Move and Rename Images
 
@@ -73,7 +73,7 @@ For each image:
 
 **Example:**
 ```bash
-mv "Pasted image 20260130230732.png" "附录图/数组-字符数组示例.png"
+mv "1.png" "附录图/数组-字符数组示例.png"
 ```
 
 ### Step 4: Update Image Links
@@ -86,7 +86,7 @@ Update all image links in the Markdown file to reference the new paths:
 **Example:**
 ```markdown
 # Before:
-![[Pasted image 20260130230732.png]]
+![[1.png]]
 
 # After:
 ![[附录图/数组-字符数组示例.png]]
@@ -113,14 +113,14 @@ After updating links, clean up the Markdown file:
 
 ```python
 # 1. Read the Markdown file
-file_path = "蓝图/算法/数组.md"
+file_path = "一级目录/二级目录/数组.md"
 content = read_file(file_path)
 
 # 2. Extract all image links
 images = extract_image_links(content)
 # Returns: [
-#   {"original": "Pasted image 20260130230732.png", "context": "字符数组的例子"},
-#   {"original": "Pasted image 20260130230810.png", "context": "删除元素移动"},
+#   {"original": "1.png", "context": "字符数组的例子"},
+#   {"original": "2.png", "context": "删除元素移动"},
 #   ...
 # ]
 
@@ -131,8 +131,8 @@ for image in images:
 
 # 4. Move images
 for image in images:
-    old_path = f"蓝图/算法/{image['original']}"
-    new_path = f"蓝图/算法/附录图/{image['new_name']}"
+    old_path = f"一级目录/二级目录/{image['original']}"
+    new_path = f"一级目录/二级目录/附录图/{image['new_name']}"
     move_file(old_path, new_path)
 
 # 5. Update links
@@ -188,7 +188,7 @@ Always verify:
 
 ## Link Types Supported
 
-### Obsidian Wikilinks
+### Wikilinks
 ```markdown
 ![[image.png]]
 ![[folder/image.png]]
@@ -249,13 +249,13 @@ for link in extract_image_links(updated_content):
 ## Example Session
 
 **User Request:**
-"将 `蓝图/算法/数组.md` 文件中使用的图片全部移动至'附录图'文件夹中，并且保持文本图片的显示正常，同时修改图片的文件名称，使其符合文本链接意思"
+"将 `一级目录/二级目录/文档.md` 文件中使用的图片全部移动至'附录图'文件夹中，并且保持文本图片的显示正常，同时修改图片的文件名称，使其符合文本链接意思"
 
 **Agent Actions:**
-1. Read `蓝图/算法/数组.md`
+1. Read `一级目录/二级目录/文档.md`
 2. Extract image links and contexts
 3. Generate meaningful names for each image
-4. Move images to `蓝图/算法/附录图/` with new names
+4. Move images to `一级目录/二级目录/附录图/` with new names
 5. Update image links in the Markdown file
 6. Clean up text formatting
 7. Verify all images display correctly

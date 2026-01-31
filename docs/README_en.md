@@ -1,20 +1,20 @@
-# Obsidian Image Organizer Skill
+# Markdown Image Organizer
 
-An OpenCode Agent Skill for organizing and managing images in Obsidian notes. It intelligently moves images to specified folders, renames them based on context, updates Markdown links, and cleans up text formatting.
+An Agent Skill for organizing and managing images in Markdown documents. It intelligently moves images to specified folders, renames them based on context, updates Markdown links, and cleans up text formatting. Compatible with all Markdown editors including Obsidian, Typora, VS Code, and more.
 
 [中文文档](../README.md)
 
 ## Features
 
 - **Smart Renaming**: Automatically generates meaningful image names based on document context
-- **Automatic Organization**: Moves images to specified folders (e.g., "附录图", "images", "assets")
+- **Automatic Organization**: Moves images to specified folders (e.g., "appendix", "images", "assets")
 - **Link Updates**: Automatically updates image links in Markdown files
 - **Format Cleanup**: Removes extra blank lines, standardizes code blocks, and more
 - **Batch Processing**: Process multiple Markdown files at once
 
 ## Use Cases
 
-When your Obsidian notes contain many pasted images (usually named like `Pasted image 20260130230732.png`) and you want to:
+When your Markdown documents (such as Obsidian notes, Typora documents, etc.) contain many pasted images (usually named like `1.png`, `2.png`) and you want to:
 
 - Organize images into dedicated folders
 - Give images meaningful filenames
@@ -25,7 +25,7 @@ When your Obsidian notes contain many pasted images (usually named like `Pasted 
 
 ### Basic Usage
 
-After loading this skill in OpenCode CLI, use:
+After loading this skill in for example OpenCode CLI, use:
 
 ```bash
 opencode skills load image-organizer
@@ -33,7 +33,7 @@ opencode skills load image-organizer
 
 Then make requests to the agent, for example:
 
-> Move all images in the `蓝图/算法/数组.md` file to the '附录图' folder, maintain proper image display, and rename image files to match their context in the text.
+> Move all images in the `folder-one/folder-two/arrays.md` file to the 'appendix' folder, maintain proper image display, and rename image files to match their context in the text.
 
 ### Processing Flow
 
@@ -45,11 +45,11 @@ Then make requests to the agent, for example:
 
 ### Naming Convention
 
-Image names follow this format: `[Note Name]-[Description].png`
+Image names follow this format: `[Document Name]-[Description].png`
 
 For example:
-- `Pasted image 20260130230732.png` → `数组-字符数组示例.png`
-- `Pasted image 20260130230810.png` → `数组-删除元素移动.png`
+- `1.png` → `arrays-char-array-example.png`
+- `2.png` → `arrays-delete-element-movement.png`
 
 ## Installation
 
@@ -61,16 +61,31 @@ For example:
 ### Installation Steps
 
 ```bash
-git clone https://github.com/your-username/image-organizer.git
-cd image-organizer
+git clone https://github.com/tuokun/markdown-image-organizer.git
+cd markdown-image-organizer
 ```
 
-Copy the `skills/image-organizer/SKILL.md` file to your OpenCode skills directory.
+Copy the `skills/image-organizer/SKILL.md` file to your skills directory.
+
+### OpenCode Directory Structure Example
+
+```bash
+git clone https://github.com/tuokun/markdown-image-organizer.git
+cd markdown-image-organizer
+```
+
+The project already includes the `.opencode/image-organizer/` example directory structure. You can run OpenCode CLI directly in the current directory:
+
+```bash
+opencode skills load .opencode/image-organizer
+```
+
+This approach demonstrates the standard OpenCode skills directory structure for better understanding and maintenance.
 
 ## Project Structure
 
 ```
-image-organizer/
+markdown-image-organizer/
 ├── skills/
 │   └── image-organizer/
 │       └── SKILL.md          # Core skill definition file
@@ -90,47 +105,48 @@ image-organizer/
 
 ## Supported Link Types
 
-- Obsidian Wikilinks: `![[image.png]]`
+- Wikilinks: `![[image.png]]`
 - Markdown links: `![alt text](image.png)`
-- Links with paths: `![[folder/image.png]]`
+- Links with paths: `![[folder/image.png]]` or `![alt text](folder/image.png)`
 
 ## Example
 
 ### Input Document
 
 ```markdown
-# 数组
+# Arrays
 
-举一个字符数组的例子，如图所示：
+Here's an example of a character array:
 
-![[Pasted image 20260130230732.png]]
+![[1.png]]
 
-删除元素时的移动过程：
+The movement process when deleting elements:
 
-![[Pasted image 20260130230810.png]]
+![[2.png]]
 ```
 
 ### Output Result
 
 ```markdown
-# 数组
+# Arrays
 
-举一个字符数组的例子，如图所示：
+Here's an example of a character array:
 
-![[附录图/数组-字符数组示例.png]]
+![[appendix/arrays-char-array-example.png]]
 
-删除元素时的移动过程：
+The movement process when deleting elements:
 
-![[附录图/数组-删除元素移动.png]]
+![[appendix/arrays-delete-element-movement.png]]
 ```
 
 Image file structure:
 ```
-数组/
-├── 数组.md
-└── 附录图/
-    ├── 数组-字符数组示例.png
-    └── 数组-删除元素移动.png
+folder-one/
+├── folder-two/
+│   ├── arrays.md
+│   └── appendix/
+│       ├── arrays-char-array-example.png
+│       └── arrays-delete-element-movement.png
 ```
 
 ## Contributing

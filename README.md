@@ -1,8 +1,8 @@
-# Obsidian Image Organizer Skill
+# Markdown Image Organizer
 
-一个用于在 Obsidian 笔记中组织和管理图片的 OpenCode Agent Skill。它可以智能地将图片移动到指定文件夹，根据上下文重命名图片，更新 Markdown 链接，并清理文本格式。
+一个用于在 Markdown 文档中组织和管理图片的 Agent Skill。它可以智能地将图片移动到指定文件夹，根据上下文重命名图片，更新 Markdown 链接，并清理文本格式。适用于所有 Markdown 编辑器，包括 Obsidian、Typora、VS Code 等。
 
-[English Documentation](docs/README_en.md)
+[English](docs/README_en.md)
 
 ## 功能特点
 
@@ -14,7 +14,7 @@
 
 ## 适用场景
 
-当你的 Obsidian 笔记中包含大量粘贴的图片（通常名称如 `Pasted image 20260130230732.png`），并且希望：
+当你的 Markdown 文档（如 Obsidian 笔记、Typora 文档等）中包含大量粘贴的图片（通常名称如 `1.png`、`2.png`），并且希望：
 
 - 将图片整理到专门的文件夹中
 - 为图片添加有意义的文件名
@@ -25,7 +25,7 @@
 
 ### 基本用法
 
-当你在 OpenCode CLI 中加载此 skill 后，可以使用以下命令：
+当你在例如 OpenCode CLI 中加载此 skill 后，可以使用以下命令：
 
 ```bash
 opencode skills load image-organizer
@@ -33,7 +33,7 @@ opencode skills load image-organizer
 
 然后向 agent 提出请求，例如：
 
-> 将 `蓝图/算法/数组.md` 文件中使用的图片全部移动至'附录图'文件夹中，并且保持文本图片的显示正常，同时修改图片的文件名称，使其符合文本链接意思
+> 将 `一级目录/二级目录/数组.md` 文件中使用的图片全部移动至'附录图'文件夹中，并且保持文本图片的显示正常，同时修改图片的文件名称，使其符合文本链接意思
 
 ### 处理流程
 
@@ -45,11 +45,11 @@ opencode skills load image-organizer
 
 ### 命名规则
 
-图片名称采用以下格式：`[笔记名称]-[描述性文字].png`
+图片名称采用以下格式：`[文档名称]-[描述性文字].png`
 
 例如：
-- `Pasted image 20260130230732.png` → `数组-字符数组示例.png`
-- `Pasted image 20260130230810.png` → `数组-删除元素移动.png`
+- `1.png` → `数组-字符数组示例.png`
+- `2.png` → `数组-删除元素移动.png`
 
 ## 安装
 
@@ -61,16 +61,31 @@ opencode skills load image-organizer
 ### 安装步骤
 
 ```bash
-git clone https://github.com/your-username/image-organizer.git
-cd image-organizer
+git clone https://github.com/tuokun/markdown-image-organizer.git
+cd markdown-image-organizer
 ```
 
-将 `skills/image-organizer/SKILL.md` 文件复制到你的 OpenCode skills 目录中。
+将 `skills/image-organizer/SKILL.md` 文件复制到你的 skills 目录中。
+
+#### opencode目录结构示例
+
+```bash
+git clone https://github.com/tuokun/markdown-image-organizer.git
+cd markdown-image-organizer
+```
+
+项目已包含 `.opencode/image-organizer/` 示例目录结构，你可以直接在当前目录运行 OpenCode CLI：
+
+```bash
+opencode skills load .opencode/image-organizer
+```
+
+这种方式展示了 OpenCode skills 的标准目录结构，便于理解和维护。
 
 ## 文件结构
 
 ```
-image-organizer/
+markdown-image-organizer/
 ├── skills/
 │   └── image-organizer/
 │       └── SKILL.md          # 核心技能定义文件
@@ -90,9 +105,9 @@ image-organizer/
 
 ## 支持的链接类型
 
-- Obsidian Wikilinks: `![[image.png]]`
+- Wikilinks: `![[image.png]]`
 - Markdown 链接: `![alt text](image.png)`
-- 带路径的链接: `![[folder/image.png]]`
+- 带路径的链接: `![[folder/image.png]]` 或 `![alt text](folder/image.png)`
 
 ## 示例
 
@@ -103,11 +118,11 @@ image-organizer/
 
 举一个字符数组的例子，如图所示：
 
-![[Pasted image 20260130230732.png]]
+![[1.png]]
 
 删除元素时的移动过程：
 
-![[Pasted image 20260130230810.png]]
+![[2.png]]
 ```
 
 ### 输出结果
@@ -126,11 +141,12 @@ image-organizer/
 
 图片文件结构：
 ```
-数组/
-├── 数组.md
-└── 附录图/
-    ├── 数组-字符数组示例.png
-    └── 数组-删除元素移动.png
+一级目录/
+├── 二级目录/
+│   ├── 数组.md
+│   └── 附录图/
+│       ├── 数组-字符数组示例.png
+│       └── 数组-删除元素移动.png
 ```
 
 ## 贡献
