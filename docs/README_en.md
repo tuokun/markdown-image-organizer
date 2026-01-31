@@ -28,7 +28,7 @@ When your Markdown documents (such as Obsidian notes, Typora documents, etc.) co
 After loading this skill in for example OpenCode CLI, use:
 
 ```bash
-opencode skills load image-organizer
+opencode skills load markdown-image-organizer
 ```
 
 Then make requests to the agent, for example:
@@ -65,7 +65,7 @@ git clone https://github.com/tuokun/markdown-image-organizer.git
 cd markdown-image-organizer
 ```
 
-Copy the `skills/image-organizer/SKILL.md` file to your skills directory.
+Copy the `skills/markdown-image-organizer/SKILL.md` file to your skills directory.
 
 ### OpenCode Directory Structure Example
 
@@ -74,10 +74,10 @@ git clone https://github.com/tuokun/markdown-image-organizer.git
 cd markdown-image-organizer
 ```
 
-The project already includes the `.opencode/image-organizer/` example directory structure. You can run OpenCode CLI directly in the current directory:
+The project already includes the `.opencode/skills/markdown-image-organizer/` example directory structure. You can run OpenCode CLI directly in the current directory:
 
 ```bash
-opencode skills load .opencode/image-organizer
+opencode skills load .opencode/skills/markdown-image-organizer
 ```
 
 This approach demonstrates the standard OpenCode skills directory structure for better understanding and maintenance.
@@ -87,7 +87,7 @@ This approach demonstrates the standard OpenCode skills directory structure for 
 ```
 markdown-image-organizer/
 ├── skills/
-│   └── image-organizer/
+│   └── markdown-image-organizer/
 │       └── SKILL.md          # Core skill definition file
 ├── docs/
 │   └── README_en.md          # English documentation

@@ -28,7 +28,7 @@
 当你在例如 OpenCode CLI 中加载此 skill 后，可以使用以下命令：
 
 ```bash
-opencode skills load image-organizer
+opencode skills load markdown-image-organizer
 ```
 
 然后向 agent 提出请求，例如：
@@ -65,7 +65,7 @@ git clone https://github.com/tuokun/markdown-image-organizer.git
 cd markdown-image-organizer
 ```
 
-将 `skills/image-organizer/SKILL.md` 文件复制到你的 skills 目录中。
+将 `skills/markdown-image-organizer/SKILL.md` 文件复制到你的 skills 目录中。
 
 #### opencode目录结构示例
 
@@ -74,10 +74,10 @@ git clone https://github.com/tuokun/markdown-image-organizer.git
 cd markdown-image-organizer
 ```
 
-项目已包含 `.opencode/image-organizer/` 示例目录结构，你可以直接在当前目录运行 OpenCode CLI：
+项目已包含 `.opencode/skills/markdown-image-organizer/` 示例目录结构，你可以直接在当前目录运行 OpenCode CLI：
 
 ```bash
-opencode skills load .opencode/image-organizer
+opencode skills load .opencode/skills/markdown-image-organizer
 ```
 
 这种方式展示了 OpenCode skills 的标准目录结构，便于理解和维护。
@@ -87,7 +87,7 @@ opencode skills load .opencode/image-organizer
 ```
 markdown-image-organizer/
 ├── skills/
-│   └── image-organizer/
+│   └── markdown-image-organizer/
 │       └── SKILL.md          # 核心技能定义文件
 ├── docs/
 │   └── README_en.md          # 英文文档
