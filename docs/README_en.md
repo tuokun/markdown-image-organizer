@@ -53,46 +53,37 @@ For example:
 
 ## Installation
 
-### Prerequisites
+This project is an Agent Skill — the entire repository IS the skill. Simply clone it into the skills directory of your preferred tool.
 
-- OpenCode CLI
-- Node.js 18+ or Bun
-
-### Installation Steps
+### Claude Code
 
 ```bash
-git clone https://github.com/tuokun/markdown-image-organizer.git
-cd markdown-image-organizer
+# Project-level (recommended, current project only)
+git clone https://github.com/tuokun/markdown-image-organizer.git .claude/skills/markdown-image-organizer
+
+# Global (available in all projects)
+git clone https://github.com/tuokun/markdown-image-organizer.git ~/.claude/skills/markdown-image-organizer
 ```
 
-Copy the `skills/markdown-image-organizer/SKILL.md` file to your skills directory.
-
-### OpenCode Directory Structure Example
+### OpenCode
 
 ```bash
-git clone https://github.com/tuokun/markdown-image-organizer.git
-cd markdown-image-organizer
+# Project-local (recommended, current project only)
+git clone https://github.com/tuokun/markdown-image-organizer.git .opencode/skills/markdown-image-organizer
+
+# Global (available in all projects)
+git clone https://github.com/tuokun/markdown-image-organizer.git ~/.config/opencode/skills/markdown-image-organizer
 ```
-
-The project already includes the `.opencode/skills/markdown-image-organizer/` example directory structure. You can run OpenCode CLI directly in the current directory:
-
-```bash
-opencode skills load .opencode/skills/markdown-image-organizer
-```
-
-This approach demonstrates the standard OpenCode skills directory structure for better understanding and maintenance.
 
 ## Project Structure
 
 ```
 markdown-image-organizer/
-├── skills/
-│   └── markdown-image-organizer/
-│       └── SKILL.md          # Core skill definition file
+├── SKILL.md          # Core skill definition file
 ├── docs/
-│   └── README_en.md          # English documentation
-├── README.md                 # Chinese documentation
-└── LICENSE                   # Apache 2.0 license
+│   └── README_en.md  # English documentation
+├── README.md         # Chinese documentation
+└── LICENSE           # Apache 2.0 license
 ```
 
 ## Supported Image Formats

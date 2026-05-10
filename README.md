@@ -53,46 +53,37 @@ opencode skills load markdown-image-organizer
 
 ## 安装
 
-### 前置要求
+本项目为 Agent Skill，整个仓库即 Skill，直接克隆到对应工具的 skills 目录即可使用。
 
-- OpenCode CLI
-- Node.js 18+ 或 Bun
-
-### 安装步骤
+### Claude Code
 
 ```bash
-git clone https://github.com/tuokun/markdown-image-organizer.git
-cd markdown-image-organizer
+# 项目
+git clone https://github.com/tuokun/markdown-image-organizer.git .claude/skills/markdown-image-organizer
+
+# 全局
+git clone https://github.com/tuokun/markdown-image-organizer.git ~/.claude/skills/markdown-image-organizer
 ```
 
-将 `skills/markdown-image-organizer/SKILL.md` 文件复制到你的 skills 目录中。
-
-#### opencode目录结构示例
+### OpenCode
 
 ```bash
-git clone https://github.com/tuokun/markdown-image-organizer.git
-cd markdown-image-organizer
+# 项目
+git clone https://github.com/tuokun/markdown-image-organizer.git .opencode/skills/markdown-image-organizer
+
+# 全局
+git clone https://github.com/tuokun/markdown-image-organizer.git ~/.config/opencode/skills/markdown-image-organizer
 ```
-
-项目已包含 `.opencode/skills/markdown-image-organizer/` 示例目录结构，你可以直接在当前目录运行 OpenCode CLI：
-
-```bash
-opencode skills load .opencode/skills/markdown-image-organizer
-```
-
-这种方式展示了 OpenCode skills 的标准目录结构，便于理解和维护。
 
 ## 文件结构
 
 ```
 markdown-image-organizer/
-├── skills/
-│   └── markdown-image-organizer/
-│       └── SKILL.md          # 核心技能定义文件
+├── SKILL.md          # 核心技能定义文件
 ├── docs/
-│   └── README_en.md          # 英文文档
-├── README.md                 # 中文文档
-└── LICENSE                   # Apache 2.0 许可证
+│   └── README_en.md  # 英文文档
+├── README.md         # 中文文档
+└── LICENSE           # Apache 2.0 许可证
 ```
 
 ## 支持的图片格式

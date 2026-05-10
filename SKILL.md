@@ -1,6 +1,8 @@
 ---
 name: markdown-image-organizer
 description: Organize and manage images in Markdown documents by moving them to specified folders, renaming them meaningfully based on context, and updating links. Also cleans up text formatting. Compatible with all Markdown editors including Obsidian.
+metadata:
+  version: "1.0.0"
 ---
 
 # Markdown Image Organizer Skill
